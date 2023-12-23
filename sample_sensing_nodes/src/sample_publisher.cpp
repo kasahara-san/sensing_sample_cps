@@ -24,14 +24,16 @@ class SensingPublisher : public rclcpp::Node
     void timer_callback()
     {
       auto message = sensing_msgs::msg::Sample();
-      message.parameter_id = 0;
-      message.parameter_value = parameter_value;
-      RCLCPP_INFO(this->get_logger(), "Sending the int32 value %d to parameter_id : 0 in mongodb", message.parameter_value);
+      message.model_name = "sample_model";
+      message.component_name = "sample_component";
+      message.sample_parameter_value = sample_parameter_value;
+      RCLCPP_INFO(this->get_logger(), "Sending the value to parameter( model_name = %s, component_name : %s) in mongodb", message.model_name.c_str(),message.component_name.c_str());
+      RCLCPP_INFO(this->get_logger(), "sample_parameter_value : %d", message.sample_parameter_value);
       publisher_->publish(message);
-      parameter_value += 1;
+      sample_parameter_value += 1;
     }
 
-    int parameter_value = 0;
+    int sample_parameter_value = 0;
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<sensing_msgs::msg::Sample>::SharedPtr publisher_;
     size_t count_;
