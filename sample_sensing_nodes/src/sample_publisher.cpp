@@ -25,9 +25,9 @@ class SensingPublisher : public rclcpp::Node
     {
       auto message = sensing_msgs::msg::Sample();
       message.model_name = "sample_model";
-      message.component_name = "sample_component";
+      message.record_name = "sample_component";
       message.sample_parameter_value = sample_parameter_value;
-      RCLCPP_INFO(this->get_logger(), "Sending the value to parameter( model_name = %s, component_name : %s) in mongodb", message.model_name.c_str(),message.component_name.c_str());
+      RCLCPP_INFO(this->get_logger(), "Sending the value to parameter( model_name = %s, record_name : %s) in mongodb", message.model_name.c_str(),message.record_name.c_str());
       RCLCPP_INFO(this->get_logger(), "sample_parameter_value : %d", message.sample_parameter_value);
       publisher_->publish(message);
       sample_parameter_value += 1;
