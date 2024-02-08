@@ -18,14 +18,14 @@ set(dependencies
 )
 
 add_executable(sample_publisher src/sample_publisher.cpp)
-add_executable(zx120_end_effector_publisher src/zx120_end_effector_publisher.cpp)
+add_executable(zx200_end_effector_publisher src/zx200_end_effector_publisher.cpp)
 
 ament_target_dependencies(sample_publisher ${dependencies})
-ament_target_dependencies(zx120_end_effector_publisher ${dependencies})
+ament_target_dependencies(zx200_end_effector_publisher ${dependencies})
 
 install(TARGETS
   sample_publisher
-  zx120_end_effector_publisher
+  zx200_end_effector_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
