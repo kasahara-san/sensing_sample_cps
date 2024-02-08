@@ -25,7 +25,7 @@ class Zx200EndEffectorPublisher : public rclcpp::Node
     {
       auto message = sensing_msgs::msg::Zx200EndEffector();
       message.model_name = "zx200";
-      message.record_name = "end_effector";
+      message.record_name = "target_excavate_pose";
       message.x = x;
       message.y = y;
       message.z = z;
