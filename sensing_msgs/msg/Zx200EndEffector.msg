@@ -1,4 +1,3 @@
-string[] keep_pos # 位置を現状のままにするパラメータの名前(例：x,y,z)
 string model_name   # 機種名(例：zx200)
 string record_name # パラメータデータ検索用の固有の名称
 int32 position_with_angle # 目標位置姿勢の選択方法
