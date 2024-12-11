@@ -14,7 +14,7 @@ class Zx200EndEffectorPublisher : public rclcpp::Node
 {
   public:
     Zx200EndEffectorPublisher()
-    : Node("simple_publisher"), count_(0)
+    : Node("zx200_end_effector_publisher"), count_(0)
     {
       publisher_ = this->create_publisher<sensing_msgs::msg::Zx200EndEffector>("/zx200/end_effector", 10);
       timer_ = this->create_wall_timer(1000ms, std::bind(&Zx200EndEffectorPublisher::timer_callback, this));
@@ -25,7 +25,8 @@ class Zx200EndEffectorPublisher : public rclcpp::Node
     {
       auto message = sensing_msgs::msg::Zx200EndEffector();
       message.model_name = "zx200";
-      message.record_name = "target_excavate_pose";
+
+      message.record_name = "target_excavate_pose"
       // message.record_name = "target_release_pose";
       // To update target excavate position, please set message.record_name = "target_excavate_pose".
       // To update target position, please set message.record_name = "target_release_pose".

@@ -17,16 +17,16 @@ set(dependencies
   sensing_msgs
 )
 
-add_executable(sample_publisher src/sample_publisher.cpp)
+add_executable(zx200_collision_objects_ic120 src/zx200_collision_objects_ic120.cpp)
 add_executable(zx200_end_effector_publisher src/zx200_end_effector_publisher.cpp)
 add_executable(flgs_publisher src/flgs_publisher.cpp)
 
-ament_target_dependencies(sample_publisher ${dependencies})
+ament_target_dependencies(zx200_collision_objects_ic120 ${dependencies})
 ament_target_dependencies(zx200_end_effector_publisher ${dependencies})
 ament_target_dependencies(flgs_publisher ${dependencies})
 
 install(TARGETS
-  sample_publisher
+  zx200_collision_objects_ic120
   zx200_end_effector_publisher
   flgs_publisher
   DESTINATION lib/${PROJECT_NAME}

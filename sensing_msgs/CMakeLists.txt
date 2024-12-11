@@ -14,10 +14,11 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/Sample.msg"
   "msg/Zx200EndEffector.msg"
+  "msg/Zx200CollisionObjectsIc120.msg"
   "msg/Flgs.msg"
   DEPENDENCIES builtin_interfaces
 )
 
 ament_package()
+

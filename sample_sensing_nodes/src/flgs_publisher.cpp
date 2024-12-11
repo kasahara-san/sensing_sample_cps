@@ -14,7 +14,7 @@ class FlgsPublisher : public rclcpp::Node
 {
   public:
     FlgsPublisher()
-    : Node("simple_publisher")
+    : Node("flgs_publisher")
     {
       publisher_ = this->create_publisher<sensing_msgs::msg::Flgs>("/Flgs", 10);
       timer_ = this->create_wall_timer(1000ms, std::bind(&FlgsPublisher::timer_callback, this));
@@ -24,13 +24,17 @@ class FlgsPublisher : public rclcpp::Node
     void timer_callback()
     {
       auto message = sensing_msgs::msg::Flgs();
-      message.record_name = "SAMPLE_BLACKBOARD_SIMIZU";
-      //   message.loaded_flg = false;
+      message.record_name = "SAMPLE_BLACKBOARD_SHIMIZU";
       message.continue_flg = true;
-      message.keep_val_flgs = {"LOADED_FLG"};
+      // message.keep_val_flgs = {"CONTINUE_FLG"};
+      message.sensing_arrival_flg = false;
+      message.sensing_check_mound_flg = false;
+      message.sensing_loaded_flg = false;
       RCLCPP_INFO(this->get_logger(), "Sending the Flgs.msg to parameter( record_name : %s) in mongodb",message.record_name.c_str());
-      RCLCPP_INFO(this->get_logger(), "loaded_flg : %f", message.loaded_flg);
-      RCLCPP_INFO(this->get_logger(), "continue_flg : %f", message.continue_flg);
+      RCLCPP_INFO(this->get_logger(), "continue_flg : %s", message.continue_flg ? "true" : "false");
+      RCLCPP_INFO(this->get_logger(), "sensing_arrival_flg : %s", message.sensing_arrival_flg ? "true" : "false");
+      RCLCPP_INFO(this->get_logger(), "sensing_check_mound_flg : %s", message.sensing_check_mound_flg ? "true" : "false");
+      RCLCPP_INFO(this->get_logger(), "sensing_loaded_flg : %s", message.sensing_loaded_flg ? "true" : "false");
       publisher_->publish(message);
     }
 
